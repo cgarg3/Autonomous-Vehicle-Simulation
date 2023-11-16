@@ -1,5 +1,8 @@
 # Adding a simple A* algorithm for global path planning and basic local planning algorithm.
 # Library used: Networkx for graph representation 
+# Libraries install:
+#    i) pip install networkx
+#    ii) pip install numpy 
 
 import networkx as nx
 import heapq
