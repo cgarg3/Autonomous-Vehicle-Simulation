@@ -44,21 +44,19 @@ class PathPlanner:
                     neighbors.append((row + i, col + j))
         return neighbors
 
-    def calculate_edge_weight(self, node1, node2):
+        def calculate_edge_weight(self, node1, node2):
         # Calculate the weight (cost) of the edge between two nodes
         # This could be based on the Euclidean distance or other factors
         return 1  # For simplicity, using a constant weight
 
-        # Example usage:
-        # map_data is a 2D array representing a grid-based map
-        map_data = [
-            [0, 0, 0, 0],
-            [0, 1, 0, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0]
-        ]
-
-        path_planner = PathPlanner(map_data)
+# Create an instance of PathPlanner outside the class definition
+map_data = [
+    [0, 0, 0, 0],
+    [0, 1, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0]
+]
+path_planner = PathPlanner(map_data)
 
     def heuristic(self, a, b):
         # Calculate the Euclidean distance between two points (a and b)
