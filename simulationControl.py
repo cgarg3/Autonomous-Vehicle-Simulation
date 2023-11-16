@@ -1,3 +1,7 @@
+# outlines a good structure for orchestrating the simulation
+# Adding a real time visualisation component and incorporating metrics evaluation
+# Including appropriate methods for obtaining sensor data, updating the state based on decisions and accessing the current data
+
 class SimulationController:
     def __init__(self, vehicle, path_planner, object_detector, decision_maker):
         self.vehicle = vehicle
