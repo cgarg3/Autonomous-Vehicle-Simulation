@@ -98,3 +98,4 @@ Returns a placeholder decision ("ML Decision").
 ``` How to integrate the code with the simulator API ```
 + Carla involves interacting with the Carla Python API
 + Make sure you have the Carla Python API installed. This can be done using: pip install carla
++ To refer to the Carla Python API: https://carla.readthedocs.io/en/latest/
