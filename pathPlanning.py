@@ -46,3 +46,41 @@ class PathPlanner:
         # Reconstruct the path
         path = []
         while current_node != start:
+
+    def local_plan(self, current_pose, obstacles):
+        # Simple local planning: adjust path based on dynamic obstacles
+        # For simplicity, we'll just avoid obstacles by choosing a new random path segment
+
+        # In a real implementation, you'd use a more sophisticated local planning algorithm
+        # such as Velocity Obstacle (VO) or Dynamic Window Approach
+
+        # For now, we'll just move a certain distance forward and adjust the path
+
+        # Define a distance threshold to check for obstacles
+        distance_threshold = 2.0  # Adjust as needed based on your simulation environment
+
+        # Get the current position and orientation of the vehicle
+        x, y, _ = current_pose
+
+        # Check if there are obstacles within the distance threshold
+        if any(np.linalg.norm(np.array([x, y]) - np.array(obstacle)) < distance_threshold for obstacle in obstacles):
+            # If an obstacle is detected, generate a new random path segment
+            new_path_segment = self.generate_random_path_segment(current_pose)
+        else:
+            # If no obstacle is detected, continue with the existing path
+            new_path_segment = []
+
+        return new_path_segment
+
+    def generate_random_path_segment(self, current_pose):
+        # Generate a new random path segment
+        # This can be more sophisticated in a real implementation
+
+        # For simplicity, let's just generate a straight path segment of a fixed length
+        new_path_length = 5.0  # Adjust as needed
+        new_path_segment = [
+            current_pose,
+            (current_pose[0] + new_path_length, current_pose[1], current_pose[2])
+        ]
+
+        return new_path_segment
