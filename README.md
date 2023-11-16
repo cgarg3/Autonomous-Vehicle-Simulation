@@ -78,3 +78,20 @@ Placeholder for retrieving sensor data and performing object detection.
 Uses a dummy image as an example for sensor data.
 Returns a dummy detection result (list of detected objects).
 
+``` DecisionMaker Class: ```
++ __init__(self, rule_based=True):
+Initializes the DecisionMaker class with a boolean parameter rule_based (default is True), determining whether decision-making should be rule-based or machine learning-based.
+
++ make_decision(self, detected_objects, current_state):
+Checks if decision-making should be rule-based or machine learning-based and calls the corresponding method.
+Returns the decision.
+
++ rule_based_decision(self, detected_objects, current_state):
+Placeholder for rule-based decision-making logic.
+Example: If pedestrians are detected, prioritize stopping; otherwise, continue.
+
++ machine_learning_decision(self, detected_objects, current_state):
+Placeholder for machine learning-based decision-making logic.
+Example: Uses a trained model to determine the optimal action.
+Returns a placeholder decision ("ML Decision").
+
