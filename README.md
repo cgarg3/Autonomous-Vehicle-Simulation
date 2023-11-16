@@ -95,3 +95,6 @@ Placeholder for machine learning-based decision-making logic.
 Example: Uses a trained model to determine the optimal action.
 Returns a placeholder decision ("ML Decision").
 
+``` How to integrate the code with the simulator API ```
++ Carla involves interacting with the Carla Python API
++ Make sure you have the Carla Python API installed. This can be done using: pip install carla
