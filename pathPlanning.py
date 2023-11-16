@@ -44,7 +44,7 @@ class PathPlanner:
                     neighbors.append((row + i, col + j))
         return neighbors
 
-        def calculate_edge_weight(self, node1, node2):
+    def calculate_edge_weight(self, node1, node2):
         # Calculate the weight (cost) of the edge between two nodes
         # This could be based on the Euclidean distance or other factors
         return 1  # For simplicity, using a constant weight
@@ -89,6 +89,15 @@ path_planner = PathPlanner(map_data)
         # Reconstruct the path
         path = []
         while current_node != start:
+            path.append(current_node)
+            current_node = min(
+                self.graph.neighbors(current_node),
+                key=lambda n: cost_so_far[n] + self.heuristic(destination, n)
+            )
+        path.append(start)
+        path.reverse()
+
+        return path
 
     def local_plan(self, current_pose, obstacles):
         # Simple local planning: adjust path based on dynamic obstacles
