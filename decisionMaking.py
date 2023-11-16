@@ -4,11 +4,36 @@ class DecisionMaker:
 
     def make_decision(self, detected_objects, current_state):
         if self.rule_based:
-            # Implement rule-based decision-making logic
-            # Consider traffic rules, pedestrian crossings, etc.
-            pass
+            # Rule-based decision-making logic
+            decision = self.rule_based_decision(detected_objects, current_state)
         else:
-            # Implement machine learning-based decision-making logic
-            # Use a trained model to determine the optimal action
-            pass
+            # Machine learning-based decision-making logic
+            decision = self.machine_learning_decision(detected_objects, current_state)
 
+        return decision
+
+    def rule_based_decision(self, detected_objects, current_state):
+        # Placeholder for rule-based decision-making logic
+        # Example: If pedestrians detected, prioritize stopping
+        if any(obj['class'] == 'person' for obj in detected_objects):
+            decision = "Stop"
+        else:
+            decision = "Continue"
+
+        return decision
+
+    def machine_learning_decision(self, detected_objects, current_state):
+        # Placeholder for machine learning-based decision-making logic
+        # Example: Use a trained model to determine the optimal action
+        # Replace this with the actual machine learning model inference
+        decision = "ML Decision"
+        
+        return decision
+
+# Example usage:
+decision_maker = DecisionMaker(rule_based=True)
+detected_objects = [{"class": "car", "position": (100, 200)}, {"class": "person", "position": (300, 150)}]
+current_state = "Some State"
+
+decision = decision_maker.make_decision(detected_objects, current_state)
+print("Decision:", decision)
