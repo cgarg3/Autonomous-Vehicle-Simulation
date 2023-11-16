@@ -2,6 +2,7 @@ class DecisionMaker:
     def __init__(self, rule_based=True):
         self.rule_based = rule_based
 
+    # checks whether the decision making should be rule based or machine learning based
     def make_decision(self, detected_objects, current_state):
         if self.rule_based:
             # Rule-based decision-making logic
@@ -12,6 +13,7 @@ class DecisionMaker:
 
         return decision
 
+    # method that contains a simple rule prioritizing stopping if pedestrains are detected
     def rule_based_decision(self, detected_objects, current_state):
         # Placeholder for rule-based decision-making logic
         # Example: If pedestrians detected, prioritize stopping
