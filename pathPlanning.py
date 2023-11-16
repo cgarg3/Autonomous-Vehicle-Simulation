@@ -10,7 +10,7 @@ class PathPlanner:
         self.map_data = map_data
         self.graph = self.build_graph(map_data)
 
- def build_graph(self, map_data):
+    def build_graph(self, map_data):
         # Create a directed graph using networkx
         graph = nx.DiGraph()
 
