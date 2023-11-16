@@ -10,10 +10,55 @@ class PathPlanner:
         self.map_data = map_data
         self.graph = self.build_graph(map_data)
 
-   def build_graph(self, map_data):
-        # Build a graph representation of the map (nodes represent locations, edges represent connections)
-        # This can be adapted based on the format of your map data
-        pass
+ def build_graph(self, map_data):
+        # Create a directed graph using networkx
+        graph = nx.DiGraph()
+
+        # Assuming map_data is a 2D array where each element represents a cell in the grid
+        rows, cols = len(map_data), len(map_data[0])
+
+        # Add nodes to the graph
+        for row in range(rows):
+            for col in range(cols):
+                if map_data[row][col] == 0:  # 0 indicates a traversable cell
+                    graph.add_node((row, col))
+
+        # Add edges between adjacent traversable cells
+        for row in range(rows):
+            for col in range(cols):
+                if map_data[row][col] == 0:  # Consider only traversable cells
+                    neighbors = self.get_neighbors((row, col), rows, cols)
+                    for neighbor in neighbors:
+                        if map_data[neighbor[0]][neighbor[1]] == 0:  # Only connect to traversable neighbors
+                            graph.add_edge((row, col), neighbor, weight=self.calculate_edge_weight((row, col), neighbor))
+
+        return graph
+
+    def get_neighbors(self, node, rows, cols):
+        # Get neighboring nodes for a given node
+        row, col = node
+        neighbors = []
+        for i in [-1, 0, 1]:
+            for j in [-1, 0, 1]:
+                if 0 <= row + i < rows and 0 <= col + j < cols and (i, j) != (0, 0):
+                    neighbors.append((row + i, col + j))
+        return neighbors
+
+    def calculate_edge_weight(self, node1, node2):
+        # Calculate the weight (cost) of the edge between two nodes
+        # This could be based on the Euclidean distance or other factors
+        return 1  # For simplicity, using a constant weight
+
+        # Example usage:
+        # map_data is a 2D array representing a grid-based map
+        map_data = [
+            [0, 0, 0, 0],
+            [0, 1, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ]
+
+        path_planner = PathPlanner(map_data)
 
     def heuristic(self, a, b):
         # Calculate the Euclidean distance between two points (a and b)
