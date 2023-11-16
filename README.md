@@ -10,35 +10,35 @@
 Based on the specific requirements and the capabilities of the chosen simulator, the tasks have been divided.
 
 ``` PathPlanner Class: ```
-+ __init__(self, map_data)
++ __init__(self, map_data):
 Initializes the PathPlanner class with map data.
 
-+ build_graph(self, map_data)
++ build_graph(self, map_data):
 Builds a directed graph using NetworkX based on the provided map data.
 
-+ get_neighbors(self, node, rows, cols)
++ get_neighbors(self, node, rows, cols):
 Returns neighboring nodes for a given node.
 
-+ calculate_edge_weight(self, node1, node2)
++ calculate_edge_weight(self, node1, node2):
 Calculates the weight (cost) of the edge between two nodes.
 
-+ heuristic(self, a, b)
++ heuristic(self, a, b):
 Calculates the Euclidean distance between two points a and b.
 
-+ plan_path(self, start, destination)
++ plan_path(self, start, destination):
 Plans a path from the start to the destination using the A* algorithm.
 
-+ local_plan(self, current_pose, obstacles)
++ local_plan(self, current_pose, obstacles):
 Implements a simple local planning algorithm, adjusting the path based on dynamic obstacles.
 
-+ generate_random_path_segment(self, current_pose)
++ generate_random_path_segment(self, current_pose):
 Generates a new random path segment for local planning.
 
 ``` SimulationController Class: ```
-+ __init__(self, vehicle, path_planner, object_detector, decision_maker)
++ __init__(self, vehicle, path_planner, object_detector, decision_maker):
 Initializes the SimulationController with instances of the Vehicle, PathPlanner, ObjectDetector, and DecisionMaker classes.
 
-+ simulate(self, start, destination)
++ simulate(self, start, destination):
 Simulates the vehicle's movement from the start to the destination.
 Plans a path using the path_planner.
 In a loop over waypoints:
@@ -50,15 +50,15 @@ Optionally includes visualization and metric evaluation steps (currently comment
 Prints a message indicating that the simulation is completed.
 
 ``` VehicleSimulation Class: ```
-+ __init__(self, map_data, sensors)
++ __init__(self, map_data, sensors):
 Initializes the VehicleSimulation class with map data and sensors.
 Creates instances of PathPlanner and ObjectDetector.
 Initializes attributes for the current pose, obstacle positions, and planned path.
 
-+ update_obstacles(self)
++ update_obstacles(self):
 Updates obstacle positions using the object detector.
 
-+ simulate(self, destination)
++ simulate(self, destination):
 Plans the global path using the path planner.
 In a simulation loop:
 Updates obstacle positions.
@@ -70,10 +70,10 @@ Simulates the vehicle movement.
 Prints the vehicle's position at each step.
 
 ``` ObjectDetector Class: ```
-+ __init__(self, sensors)
++ __init__(self, sensors):
 Initializes the ObjectDetector class with a list of sensors.
 
-+ process_sensor_data(self)
++ process_sensor_data(self):
 Placeholder for retrieving sensor data and performing object detection.
 Uses a dummy image as an example for sensor data.
 Returns a dummy detection result (list of detected objects).
