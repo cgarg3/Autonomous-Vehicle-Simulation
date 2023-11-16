@@ -2,6 +2,31 @@
 # Adding a real time visualisation component and incorporating metrics evaluation
 # Including appropriate methods for obtaining sensor data, updating the state based on decisions and accessing the current data
 
+import time  # Added for simulation speed control
+
+class Visualizer:
+    def update_visualization(self, sensor_data, detected_objects, decision, current_state):
+        # Placeholder for real-time visualization
+        print(f"Visualization - Sensor Data: {sensor_data}, Detected Objects: {detected_objects}, Decision: {decision}, Current State: {current_state}")
+
+class MetricsEvaluator:
+    def evaluate_metrics(self, sensor_data, detected_objects, decision, current_state):
+        # Placeholder for metrics evaluation
+        print(f"Metrics Evaluation - Sensor Data: {sensor_data}, Detected Objects: {detected_objects}, Decision: {decision}, Current State: {current_state}")
+
+class Vehicle:
+    def get_sensor_data(self):
+        # Placeholder for getting sensor data
+        return "Sensor Data"
+
+    def update_state(self, decision):
+        # Placeholder for updating the vehicle state based on the decision
+        print(f"Updating state based on decision: {decision}")
+
+    def get_state(self):
+        # Placeholder for getting the current state of the vehicle
+        return "Current State"
+
 class SimulationController:
     def __init__(self, vehicle, path_planner, object_detector, decision_maker, visualizer=None, metrics_evaluator=None):
         self.vehicle = vehicle
@@ -36,14 +61,13 @@ class SimulationController:
             if self.metrics_evaluator:
                 self.metrics_evaluator.evaluate_metrics(sensor_data, detected_objects, decision, self.vehicle.get_state())
 
+            # Introduce a delay for simulation speed control (replace with actual simulation time step)
+            time.sleep(1)
+
         # Simulation completed
         print("Simulation completed.")
 
 # Example usage:
-# Assume you have appropriate classes for Visualizer and MetricsEvaluator
-visualizer = Visualizer()
-metrics_evaluator = MetricsEvaluator()
-
 # Create instances of Vehicle, PathPlanner, ObjectDetector, DecisionMaker
 vehicle = Vehicle()
 path_planner = PathPlanner(map_data)
@@ -51,7 +75,7 @@ object_detector = ObjectDetector(sensors)
 decision_maker = DecisionMaker(rule_based=True)
 
 # Create an instance of SimulationController
-simulation_controller = SimulationController(vehicle, path_planner, object_detector, decision_maker, visualizer, metrics_evaluator)
+simulation_controller = SimulationController(vehicle, path_planner, object_detector, decision_maker, Visualizer(), MetricsEvaluator())
 
 # Start simulation
 simulation_controller.simulate(start=(0, 0), destination=(3, 3))
